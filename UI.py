@@ -6,10 +6,6 @@ from tkinter import ttk as ttk
 import RLE4Bit
 
 
-# from pygments import highlight
-# from pygments.lexers.c_cpp import CppLexer
-
-
 class UI:
     compressor = RLE4Bit.RLE4Bit()
     window = tk.Tk
@@ -17,8 +13,6 @@ class UI:
     def __init__(self):
         # Create the root window
         self.window = tk.Tk()
-        # print(ttk.Style().theme_names())
-        # style = ttk.Style().theme_use("vista")
         self.window.title('Bitmap Compressor')
         self.window.geometry("500x500")  # Set window size
         self.filename = ""
@@ -84,7 +78,7 @@ class UI:
         if not filename:
             return
         self.compressor.open_image(filename)  # Load the pixel data into the RLE object
-        self._display_image()  #####UPDATE THIS **********************************
+        self._display_image()
         self.filename = filename
 
     def _update_pixel_output_text(self, event = 0):
@@ -116,9 +110,6 @@ class UI:
         self.window.img = img  # Prevent garbage collection
         canvas.create_image(128 / 2, 128 / 2, image = img, state = "normal")
 
-        # if self.compress_checkbox_var.get():
-        #     pixel_data = self.compressor.compressed_pixel_data()
-        # else:
         pixel_data = self.compressor.uncompressed_pixel_data()
         array_index = 0
 
@@ -157,9 +148,6 @@ class UI:
 
         self.window.config(menu = menubar)
 
-    # def _dark_mode(self):
-    #     print("Dark mode")
-
     # From: https://realpython.com/python-gui-tkinter/
     def _save_file(self):
         filepath = filedialog.asksaveasfilename(
@@ -175,5 +163,3 @@ class UI:
                                       transparent_pixel_designator = self.transparent_pixel_designator_value.get(),
                                       compress = self.compress_checkbox_var.get(),
                                       save = True)
-
-    # def _highlight_code(self):
