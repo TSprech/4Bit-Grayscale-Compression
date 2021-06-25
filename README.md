@@ -22,20 +22,20 @@ Take your 4 bit per pixel grayscale OLED bitmaps and compress them to a more rea
 ## How to use
 1. Preparing your bitmap
    1. Create your bitmap image in your favorite image editing tool (this will be in Adobe Photoshop but there should be similar options in other tools)
-   2. When saving the file, be sure to choose the .bmp file format and 4 bit pixel depth ![Photoshop save dialog for bitmaps](github/BMP Save Dialog.png)
+   2. When saving the file, be sure to choose the .bmp file format and 4 bit pixel depth ![Photoshop save dialog for bitmaps](github/BMP-Save-Dialog.png)
       1. *Note: Do not choose to compress it when saving! Compressing it now has no real benefit*
 2. Compressing the bitmap
    1. Download the latest release from the release section
-   2. Open the program and it should come up with a GUI that looks similar to this ![GUI without data loaded](github/Blank GUI.png)
+   2. Open the program and it should come up with a GUI that looks similar to this ![GUI without data loaded](github/Blank-GUI.png)
    3. Go to File ► Open and find the bitmap you saved earlier
-   4. The program will now read your file in and a preview of it should show up in the top right ![GUI with image loaded](github/GUI With Data Loaded.png)
+   4. The program will now read your file in and a preview of it should show up in the top right ![GUI with image loaded](github/GUI-With-Data-Loaded.png)
       1. *Note: The compress checkbox will automatically be selected if your bitmap data is smaller when compressed (if compressed size < uncompressed size)
    5. You should also see a preview of what the header file will look like below the bitmap and data
    6. You can now File ► Save As if there is no transparency in your image, otherwise proceed to the next part
 3. Working with transparency
    1. Transparent pixels are defined as any pixel which should not be drawn, meaning the bitmap will use whatever value is already in the pixel buffer at that location
    2. By selecting the transparency checkbox, transparency is enabled, and a transparent pixel designator can be selected via the drop down box
-   3. The pixels which will be transparent will show in the preview as red, updated whenever a setting is changed, similar to this ![Bitmap with transparent pixels](github/GUI With Transparency.png)
+   3. The pixels which will be transparent will show in the preview as red, updated whenever a setting is changed, similar to this ![Bitmap with transparent pixels](github/GUI-With-Transparency.png)
    4. In order to have transparency, one pixel value (`0x0-0xF`) must be designated to not be drawn and instead represent all transparent pixels. To make this as flexible as possible, it is not a fixed value and can be different for every bitmap
 4. Decompressing
    1. Use the `void Decompress(uint8_t x, uint8_t y, bitmap_instance bitmap)` method to decompress the data directly into a pixel buffer
